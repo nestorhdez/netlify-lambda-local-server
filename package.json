@@ -2,9 +2,13 @@
   "name": "netlify-ts-lambda-server",
   "version": "1.0.0",
   "description": "Run locally Netlify TypeScript function",
-  "main": "index.ts",
+  "preferGlobal": true,
+  "main": "./dist/server.js",
+  "bin": {
+    "lambda-server": "./dist/server.js"
+  },
   "scripts": {
-    "server": "nodemon"
+    "build": "tsc"
   },
   "license": "ISC",
   "dependencies": {

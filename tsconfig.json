@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "removeComments": true,
+        "module": "commonjs",
+        "lib": ["ES6"],
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "downlevelIteration": true,
+        "noUnusedLocals": true,
+        "outDir": "dist",
+        "rootDir": "src",
+        "baseUrl": ".",
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}

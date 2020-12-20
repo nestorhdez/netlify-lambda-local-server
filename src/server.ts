@@ -1,6 +1,9 @@
+#!/usr/bin/env node
+
 import { APIGatewayEvent, Context } from 'aws-lambda';
 import { Application, Request, Response } from 'express';
 import { readdirSync } from 'fs';
+import { cwd } from 'process';
 
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -29,13 +32,14 @@ const parseResponse = (body: string): string | object => {
 
 (async () => {
 
+  const basePath: string = cwd();
   const endpoints: {[key: string]: ({}: APIGatewayEvent, {}: Context) => any} = {};
 
   console.log('\n Functions:');
 
-  for (const dir of readdirSync('./src')) {
+  for (const dir of readdirSync(`${basePath}/dist`)) {
     console.log(`- ${dir}`);
-    let { handler } = await import(`../src/${dir}/${dir}`);
+    let { handler } = await import(`${basePath}/dist/${dir}/${dir}`);
     endpoints[dir] = handler;
   }
 
