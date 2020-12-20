@@ -1,5 +1,5 @@
 {
-  "name": "netlify-ts-lambda-server",
+  "name": "netlify-lambda-server",
   "version": "1.0.0",
   "description": "Run locally Netlify TypeScript function",
   "preferGlobal": true,
