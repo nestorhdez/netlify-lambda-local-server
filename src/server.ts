@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env ts-node
 
 import { APIGatewayEvent, Context } from 'aws-lambda';
 import { Application, Request, Response } from 'express';
@@ -37,9 +37,9 @@ const parseResponse = (body: string): string | object => {
 
   console.log('\n Functions:');
 
-  for (const dir of readdirSync(`${basePath}/dist`)) {
+  for (const dir of readdirSync(`${basePath}/src`)) {
     console.log(`- ${dir}`);
-    let { handler } = await import(`${basePath}/dist/${dir}/${dir}`);
+    let { handler } = await import(`${basePath}/src/${dir}/${dir}`);
     endpoints[dir] = handler;
   }
 
