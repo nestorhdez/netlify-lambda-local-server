@@ -43,8 +43,8 @@ const parseResponse = (body: string): string | object => {
     endpoints[dir] = handler;
   }
 
-  app.all('/:endpoint', async (req: Request, res: Response) => {
-    const { endpoint } = req.params;
+  app.all('/*', async (req: Request, res: Response) => {
+    const [ endpoint ] = req.params['0'].split('/');
     
     const lambdaEvent = {
       body: req.body,
